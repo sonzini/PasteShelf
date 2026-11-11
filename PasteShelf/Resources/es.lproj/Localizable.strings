@@ -1,0 +1,26 @@
+/* PasteShelf — Spanish */
+
+"Image %d×%d" = "Imagen %d×%d";
+"Search…" = "Buscar…";
+"Nothing copied yet" = "Todavía no copiaste nada";
+"No results" = "Sin resultados";
+"Favorites" = "Favoritos";
+"History" = "Historial";
+"Remove from Favorites" = "Quitar de favoritos";
+"Add to Favorites" = "Marcar como favorito";
+"Delete" = "Borrar";
+"Paste on select" = "Pegar al elegir";
+"⌥ = plain text" = "⌥ = sin formato";
+"Hide Preview" = "Ocultar vista previa";
+"Show Preview" = "Mostrar vista previa";
+"Launch at Login" = "Abrir al iniciar sesión";
+"Clear History (Keeps Favorites)" = "Borrar historial (deja favoritos)";
+"Open with ⌘⇧V" = "Atajo para abrir: ⌘⇧V";
+"About PasteShelf" = "Acerca de PasteShelf";
+"Quit PasteShelf" = "Salir de PasteShelf";
+"Settings" = "Ajustes";
+"%d characters" = "%d caracteres";
+"%d lines" = "%d líneas";
+"formatted" = "con formato";
+"Clipboard history (⌘⇧V)" = "Historial del portapapeles (⌘⇧V)";
+"Clipboard history in your menu bar." = "Historial del portapapeles en la barra de menú.";

@@ -1,0 +1,20 @@
+name: Build & Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test
+        run: xcodebuild test -project PasteShelf.xcodeproj -scheme PasteShelf -destination 'platform=macOS' -derivedDataPath build/DerivedData
+      - name: Build Release
+        run: ./scripts/build.sh --zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PasteShelf
+          path: build/*.zip

@@ -1,0 +1,71 @@
+# XcodeGen spec. After editing, regenerate the Xcode project with:  xcodegen generate
+name: PasteShelf
+options:
+  bundleIdPrefix: io.github.sonzini
+  deploymentTarget:
+    macOS: "14.0"
+  developmentLanguage: en
+  createIntermediateGroups: true
+
+settings:
+  base:
+    MARKETING_VERSION: 1.0.0
+    CURRENT_PROJECT_VERSION: 1
+    SWIFT_VERSION: "5.0"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+
+targets:
+  PasteShelf:
+    type: application
+    platform: macOS
+    sources:
+      - path: PasteShelf
+    info:
+      path: PasteShelf/Info.plist
+      properties:
+        CFBundleDisplayName: PasteShelf
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSUIElement: true
+        LSApplicationCategoryType: public.app-category.productivity
+        NSHumanReadableCopyright: "© 2026 Sonzini. Released under the MIT License."
+    entitlements:
+      path: PasteShelf/PasteShelf.entitlements
+      properties:
+        # Not sandboxed: auto-paste simulates ⌘V through the Accessibility API,
+        # which the App Sandbox does not allow. See README → "App Store".
+        com.apple.security.app-sandbox: false
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.sonzini.PasteShelf
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ENABLE_HARDENED_RUNTIME: YES
+        # Ad-hoc signing so anyone can build without an Apple Developer account.
+        # For Developer ID builds, set your DEVELOPMENT_TEAM and a real identity.
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGN_STYLE: Manual
+
+  PasteShelfTests:
+    type: bundle.unit-test
+    platform: macOS
+    # Logic tests: compile the model files directly, no app host needed
+    # (so running tests never touches your real clipboard history).
+    sources:
+      - path: PasteShelfTests
+      - path: PasteShelf/ClipboardStore.swift
+      - path: PasteShelf/Localization.swift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.sonzini.PasteShelfTests
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGN_STYLE: Manual
+        GENERATE_INFOPLIST_FILE: YES
+
+schemes:
+  PasteShelf:
+    build:
+      targets:
+        PasteShelf: all
+    test:
+      targets:
+        - PasteShelfTests
